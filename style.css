@@ -1,0 +1,221 @@
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     margin-top: 1rem;  
+     gap: 1.8rem; 
+     background-color: #a3a3a3; 
+}
+
+/* navbar container */
+
+navbar > h1{
+     margin-left: 1rem;
+     display: flex;
+     justify-content: center;
+} 
+
+.wrapper h1{
+     color: rgba(36, 0, 155, 0.813);
+     border-bottom: 3px solid rgb(255, 255, 0);
+}
+
+.switch-button{
+    display: flex;
+    flex-direction: row;
+    gap:9.5rem;
+    margin: 1.5rem;
+}
+
+.search-container{
+     margin-left: 1rem;
+}
+
+.search-container > input{
+     height: 1.6rem;
+     width: 11rem;
+     border-radius: 1rem 0rem 0rem 1rem;
+     border: none;
+     padding-left: 0.5rem;
+}
+
+#searchBtn{
+    height: 1.6rem;
+    width: 1.6rem;
+    border-radius: 0rem 1rem 1rem 0rem;
+    border: none;
+    margin-left: -0.2rem;
+}
+
+#refersh{
+     margin-left: 10rem;
+     height: 1.6rem;
+     width: 3rem;
+     font-size: 0.6rem;
+     font-weight: 800;
+     border-radius: 1rem;
+}
+
+.switch-button > button{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 2rem;
+     width: 8rem;
+     font-size: 13px;
+     font-weight: 800;
+     border: none;
+     border-radius: 2rem;
+     cursor: pointer;
+}
+
+
+/* All Content Container */
+
+.add-Employee-details-container{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     padding: 1rem; 
+     gap: 0.8rem;
+     background-color: #a19e9e; 
+     border-radius: 1rem;
+}
+
+
+.form{
+     display: flex;
+     flex-direction: column;
+     gap: 0.5rem;
+}
+
+.form > label{
+     font-size: 20px;
+     font-weight: 800;
+}
+
+.form > input{
+     height: 1.8rem;
+     width: 25rem;
+     border: none;
+     border-radius: 6px;
+     padding: 0.3rem;
+}
+
+.add-Employee-details-container > button{
+     height: 2.5rem;
+     width: 9rem;
+     cursor: pointer;
+     font-size: 0.7rem;
+     font-weight: 800;
+     border: none;
+     border-radius: 2rem;
+     background-color: rgb(255, 115, 0);
+}
+
+/*  Employee List */
+
+.employee-list{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+     gap: 2rem;
+     margin-top: 1rem;
+     
+}
+
+.employee-list > div{
+     overflow-x:auto; 
+     width: 1080px;
+}
+
+
+table{
+     border:5px solid rgb(0, 0, 0);
+     border-collapse: collapse;
+     width: 100%;
+}
+
+
+th, td {
+     border:2px solid rgb(0, 0, 0);
+     border-collapse: collapse;
+     margin: 0.2rem;
+     padding: 0.5rem;
+     text-align: center;
+     font-size: 1.2rem;
+}
+
+
+.table-row-button{
+     border: none;
+     height: 1.7rem;
+     width: 3.5rem;
+     font-size: 0.7rem;
+     font-weight: 800;
+     border-radius: 0.5rem;
+     background-color: rgb(22, 0, 86);
+     color: white;
+     cursor: pointer;
+}
+
+.switch-bgd{
+     background-color: rgb(255, 115, 0);
+}
+
+.active{
+     display: none;
+}
+
+
+/* Responsive */
+
+@media screen and (max-width: 400px) {
+     .form > input{
+          height: 2rem;
+          width: 20rem;
+     }
+
+     .switch-button{
+          gap:4.5rem;
+     }
+
+     navbar > h1{
+          font-size: 20px;
+     } 
+
+     .switch-button > button{
+          height: 2rem;
+          width: 7rem;
+          font-size: 11px;
+     }   
+
+     
+     #refersh{
+          margin-left: 3rem;
+     }
+
+     .employee-list > div{
+          width: 350px;
+     }
+
+     table, th, td {
+          font-size: 0.5rem;
+     }
+
+     .table-row-button{
+          height: 0.7rem;
+          width: 1.5rem;
+          font-size: 0.2rem;
+     }
+
+}
