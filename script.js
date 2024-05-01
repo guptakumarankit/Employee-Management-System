@@ -103,7 +103,7 @@ let clearAllInput = ()=>{
 submitBtn.addEventListener("click",()=>{
      if(invalidFocus() && emailcheck()){
         addEmployeeList();
-     //    clearAllInput();
+        clearAllInput();
      }
 })
 
