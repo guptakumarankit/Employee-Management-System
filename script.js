@@ -10,6 +10,7 @@ searchContainer.classList.add("active");
 let currentslide = addEmployeeBtn;
 addEmployeeBtn.classList.add("switch-bgd");
 
+// switch the slide 
 function switchSlide(clickedSlide){
      if(currentslide != clickedSlide){
           currentslide.classList.remove("switch-bgd");
@@ -18,6 +19,7 @@ function switchSlide(clickedSlide){
      }
 }
 
+// when switch the slide then content will be change ...
 let currentslideContent = employeeListContainer;
 employeeListContainer.classList.add("active");
 
@@ -41,6 +43,38 @@ employeeListBtn.addEventListener('click',()=>{
      searchContainer.classList.remove("active");
 });
 
+// when fill the data in form the input box changes
+
+const inputs = document.querySelectorAll('input');
+// console.log(inputs);
+
+function handleKeyPress(event) {
+
+    const currentIndex = Array.from(inputs).findIndex(
+     input => input === document.activeElement);
+
+    let newIndex = 0;
+    
+    if (event.key === 'ArrowDown') {
+        newIndex = currentIndex + 1;
+    } else if (event.key === 'ArrowUp') {
+        newIndex = currentIndex - 1;
+    } 
+
+    // Wrap around when reaching the first or last input
+    if (newIndex <= 0) {
+        newIndex = inputs.length - 1;
+    } else if (newIndex >= inputs.length) {
+        newIndex = 1;
+    }
+//     console.log(newIndex)
+    inputs[newIndex].focus();
+    event.preventDefault(); // Prevent default behavior of arrow keys
+}
+
+document.addEventListener('keydown', handleKeyPress);
+
+// add all data in the from to employee list... 
 const submitBtn = document.querySelector("[submitBtn]");
 const table = document.querySelector(".table");
 
@@ -65,8 +99,10 @@ function addEmployeeList(){
      // console.log("ho gaya re baba");
 }
 
+// focus on invalid input box..
+
 let invalidFocus = () =>{
-     const inputs = document.getElementsByTagName('input');
+     // const inputs = document.getElementsByTagName('input');
      // console.log(inputs);
      for(let i=1;i<inputs.length;i++){
           if(inputs[i].value == ""){
@@ -77,6 +113,8 @@ let invalidFocus = () =>{
      }
      return true;
 }
+
+// check emailId valid or not ..
 
 let emailcheck = ()=>{
     let emailInput = document.querySelector("[email]");
@@ -92,6 +130,7 @@ let emailcheck = ()=>{
     return true;
 }
 
+// After press submit clear all input box data.
 let clearAllInput = ()=>{
      const inputs = document.getElementsByTagName('input');
      // console.log(inputs);
@@ -100,12 +139,23 @@ let clearAllInput = ()=>{
      }
 }
 
+// add all information in employee list...
 submitBtn.addEventListener("click",()=>{
      if(invalidFocus() && emailcheck()){
         addEmployeeList();
         clearAllInput();
      }
 })
+
+window.addEventListener("keydown",(e)=>{
+     if(currentslide === addEmployeeBtn && e.key === 'Enter'){
+          if(invalidFocus() && emailcheck()){
+               addEmployeeList();
+               clearAllInput();
+          }
+     }
+})
+
 
 // delete the specific row in the employee list..
 
@@ -119,13 +169,17 @@ function deleteRow(button) {
 const searchBar = document.querySelector("[search]");
 const searchButton = document.querySelector("[searchButton]");
 
-const search_content = function(){
+let search_content = ()=>{
      let tr = document.getElementsByTagName('tr');
      // console.log(tr);
      
      for(let i=1;i<tr.length;i++){
-          console.log(tr[i]);
-          console.log(tr[i].children.length);
+          // console.log(tr[i]);
+          // console.log(tr[i].children.length);
+          // if searchBar have no any value ....
+
+          if(searchBar.value === "") break; 
+
           let get = false;
           for(let j=0;j<tr[i].children.length-1;j++){
                console.log(tr[i].children[j]);
@@ -140,9 +194,16 @@ const search_content = function(){
                }
           }
      }
+     searchBar.value = "";
 }
 
+// searchbotton in employee list ....
 searchButton.addEventListener("click",search_content);
+window.addEventListener("keydown",(e)=>{
+     if(currentslide === employeeListBtn && e.key === 'Enter'){
+          search_content();
+     }
+})
 
 // Refersh the employee list..
 
