@@ -45,34 +45,34 @@ employeeListBtn.addEventListener('click',()=>{
 
 // when fill the data in form the input box changes
 
-const inputs = document.querySelectorAll('input');
-// console.log(inputs);
+// const inputs = document.querySelectorAll('input');
+// // console.log(inputs);
 
-function handleKeyPress(event) {
+// function handleKeyPress(event) {
 
-    const currentIndex = Array.from(inputs).findIndex(
-     input => input === document.activeElement);
+//     const currentIndex = Array.from(inputs).findIndex(
+//      input => input === document.activeElement);
 
-    let newIndex = 0;
-    
-    if (event.key === 'ArrowDown') {
-        newIndex = currentIndex + 1;
-    } else if (event.key === 'ArrowUp') {
-        newIndex = currentIndex - 1;
-    } 
+//     let newIndex = 0;
 
-    // Wrap around when reaching the first or last input
-    if (newIndex <= 0) {
-        newIndex = inputs.length - 1;
-    } else if (newIndex >= inputs.length) {
-        newIndex = 1;
-    }
-//     console.log(newIndex)
-    inputs[newIndex].focus();
-    event.preventDefault(); // Prevent default behavior of arrow keys
-}
+//     if (event.key === 'ArrowDown') {
+//         newIndex = currentIndex + 1;
+//     } else if (event.key === 'ArrowUp') {
+//         newIndex = currentIndex - 1;
+//     } 
 
-document.addEventListener('keydown', handleKeyPress);
+//     // Wrap around when reaching the first or last input
+//     if (newIndex <= 0) {
+//         newIndex = inputs.length - 1;
+//     } else if (newIndex >= inputs.length) {
+//         newIndex = 1;
+//     }
+// //     console.log(newIndex)
+//     inputs[newIndex].focus();
+//     event.preventDefault(); // Prevent default behavior of arrow keys
+// }
+
+// document.addEventListener('keydown', handleKeyPress);
 
 // add all data in the from to employee list... 
 const submitBtn = document.querySelector("[submitBtn]");
