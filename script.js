@@ -43,36 +43,9 @@ employeeListBtn.addEventListener('click',()=>{
      searchContainer.classList.remove("active");
 });
 
-// when fill the data in form the input box changes
+const inputs = document.querySelectorAll('input');
+console.log(inputs);
 
-// const inputs = document.querySelectorAll('input');
-// // console.log(inputs);
-
-// function handleKeyPress(event) {
-
-//     const currentIndex = Array.from(inputs).findIndex(
-//      input => input === document.activeElement);
-
-//     let newIndex = 0;
-
-//     if (event.key === 'ArrowDown') {
-//         newIndex = currentIndex + 1;
-//     } else if (event.key === 'ArrowUp') {
-//         newIndex = currentIndex - 1;
-//     } 
-
-//     // Wrap around when reaching the first or last input
-//     if (newIndex <= 0) {
-//         newIndex = inputs.length - 1;
-//     } else if (newIndex >= inputs.length) {
-//         newIndex = 1;
-//     }
-// //     console.log(newIndex)
-//     inputs[newIndex].focus();
-//     event.preventDefault(); // Prevent default behavior of arrow keys
-// }
-
-// document.addEventListener('keydown', handleKeyPress);
 
 // add all data in the from to employee list... 
 const submitBtn = document.querySelector("[submitBtn]");
@@ -145,6 +118,7 @@ submitBtn.addEventListener("click",()=>{
         addEmployeeList();
         clearAllInput();
      }
+     console.log("press the enter");
 })
 
 window.addEventListener("keydown",(e)=>{
