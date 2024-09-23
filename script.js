@@ -12,8 +12,8 @@ let currentslide = addEmployeeBtn;
 // addEmployeeBtn.classList.add("switch-bgd");
 
 // switch the slide 
-function switchSlide(clickedSlide){
-     if(currentslide != clickedSlide){
+function switchSlide(clickedSlide) {
+     if (currentslide != clickedSlide) {
           // currentslide.classList.remove("switch-bgd");
           currentslide = clickedSlide;
           // currentslide.classList.add("switch-bgd");
@@ -24,8 +24,8 @@ function switchSlide(clickedSlide){
 let currentslideContent = employeeListContainer;
 employeeListContainer.classList.add("active");
 
-function switchSlideContent(clickedSlideContent){
-     if(currentslideContent != clickedSlideContent){
+function switchSlideContent(clickedSlideContent) {
+     if (currentslideContent != clickedSlideContent) {
           currentslideContent.classList.remove("active");
           currentslideContent = clickedSlideContent;
           currentslideContent.classList.add("active");
@@ -34,7 +34,7 @@ function switchSlideContent(clickedSlideContent){
 
 
 addEmployeeBtn.classList.add("active");
-addEmployeeBtn.addEventListener('click',()=>{
+addEmployeeBtn.addEventListener('click', () => {
      switchSlide(addEmployeeBtn);
      switchSlideContent(employeeListContainer);
      searchContainer.classList.add("active");
@@ -43,7 +43,7 @@ addEmployeeBtn.addEventListener('click',()=>{
      employeeListBtn.classList.remove("active")
 });
 
-employeeListBtn.addEventListener('click',()=>{
+employeeListBtn.addEventListener('click', () => {
      switchSlide(employeeListBtn);
      switchSlideContent(addEmployeeContainer);
      searchContainer.classList.remove("active");
@@ -60,7 +60,7 @@ console.log(inputs);
 const submitBtn = document.querySelector("[submitBtn]");
 const table = document.querySelector(".table");
 
-function addEmployeeList(){
+function addEmployeeList() {
      const FullName = document.querySelector("[FullName]");
      const email = document.querySelector("[email]");
      const dateofBirth = document.querySelector("[dateofBirth]");
@@ -83,11 +83,11 @@ function addEmployeeList(){
 
 // focus on invalid input box..
 
-let invalidFocus = () =>{
+let invalidFocus = () => {
      // const inputs = document.getElementsByTagName('input');
      // console.log(inputs);
-     for(let i=1;i<inputs.length;i++){
-          if(inputs[i].value == ""){
+     for (let i = 1; i < inputs.length; i++) {
+          if (inputs[i].value == "") {
                // console.log(inputs[i].value);
                inputs[i].focus();
                return false;
@@ -98,41 +98,41 @@ let invalidFocus = () =>{
 
 // check emailId valid or not ..
 
-let emailcheck = ()=>{
-    let emailInput = document.querySelector("[email]");
-    let email = emailInput.value.trim();
-    
-    let emailRegex = /^[^\s]+gmail\.com$/;
-    
-    if (!emailRegex.test(email)){
+let emailcheck = () => {
+     let emailInput = document.querySelector("[email]");
+     let email = emailInput.value.trim();
+
+     let emailRegex = /^[^\s]+gmail\.com$/;
+
+     if (!emailRegex.test(email)) {
           alert('Please enter a valid Email address.');
           emailInput.focus();
           return false;
-    }
-    return true;
+     }
+     return true;
 }
 
 // After press submit clear all input box data.
-let clearAllInput = ()=>{
+let clearAllInput = () => {
      const inputs = document.getElementsByTagName('input');
      // console.log(inputs);
-     for(let i=1;i<inputs.length;i++){
+     for (let i = 1; i < inputs.length; i++) {
           inputs[i].value = "";
      }
 }
 
 // add all information in employee list...
-submitBtn.addEventListener("click",()=>{
-     if(invalidFocus() && emailcheck()){
-        addEmployeeList();
-        clearAllInput();
+submitBtn.addEventListener("click", () => {
+     if (invalidFocus() && emailcheck()) {
+          addEmployeeList();
+          clearAllInput();
      }
      console.log("press the enter");
 })
 
-window.addEventListener("keydown",(e)=>{
-     if(currentslide === addEmployeeBtn && e.key === 'Enter'){
-          if(invalidFocus() && emailcheck()){
+window.addEventListener("keydown", (e) => {
+     if (currentslide === addEmployeeBtn && e.key === 'Enter') {
+          if (invalidFocus() && emailcheck()) {
                addEmployeeList();
                clearAllInput();
           }
@@ -152,27 +152,27 @@ function deleteRow(button) {
 const searchBar = document.querySelector("[search]");
 const searchButton = document.querySelector("[searchButton]");
 
-let search_content = ()=>{
+let search_content = () => {
      let tr = document.getElementsByTagName('tr');
      // console.log(tr);
-     
-     for(let i=1;i<tr.length;i++){
+
+     for (let i = 1; i < tr.length; i++) {
           // console.log(tr[i]);
           // console.log(tr[i].children.length);
           // if searchBar have no any value ....
 
-          if(searchBar.value === "") break; 
+          if (searchBar.value === "") break;
 
           let get = false;
-          for(let j=0;j<tr[i].children.length-1;j++){
+          for (let j = 0; j < tr[i].children.length - 1; j++) {
                console.log(tr[i].children[j]);
-               if(tr[i].children[j].innerHTML === searchBar.value){
+               if (tr[i].children[j].innerHTML === searchBar.value) {
                     tr[i].style.display = "";
                     get = true;
                     break;
                }
 
-               if(get === false){
+               if (get === false) {
                     tr[i].style.display = "none";
                }
           }
@@ -181,9 +181,9 @@ let search_content = ()=>{
 }
 
 // searchbotton in employee list ....
-searchButton.addEventListener("click",search_content);
-window.addEventListener("keydown",(e)=>{
-     if(currentslide === employeeListBtn && e.key === 'Enter'){
+searchButton.addEventListener("click", search_content);
+window.addEventListener("keydown", (e) => {
+     if (currentslide === employeeListBtn && e.key === 'Enter') {
           search_content();
      }
 })
@@ -193,14 +193,14 @@ window.addEventListener("keydown",(e)=>{
 const refersh = document.querySelector("[refersh]");
 // console.log(refersh);
 
-refersh.addEventListener("click",()=>{
+refersh.addEventListener("click", () => {
      searchBar.value = "";
      let tr = document.getElementsByTagName('tr');
      // console.log(tr);
-     
-     for(let i=1;i<tr.length;i++){
-         if(tr[i].style.display = "none"){
-              tr[i].style.display = "";
-         }
+
+     for (let i = 1; i < tr.length; i++) {
+          if (tr[i].style.display = "none") {
+               tr[i].style.display = "";
+          }
      }
 })
