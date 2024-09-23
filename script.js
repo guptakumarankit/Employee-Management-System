@@ -6,16 +6,17 @@ const employeeListContainer = document.querySelector(".employee-list");
 const searchContainer = document.querySelector(".search-container");
 searchContainer.classList.add("active");
 
+const image = document.querySelector(".image");
 
 let currentslide = addEmployeeBtn;
-addEmployeeBtn.classList.add("switch-bgd");
+// addEmployeeBtn.classList.add("switch-bgd");
 
 // switch the slide 
 function switchSlide(clickedSlide){
      if(currentslide != clickedSlide){
-          currentslide.classList.remove("switch-bgd");
+          // currentslide.classList.remove("switch-bgd");
           currentslide = clickedSlide;
-          currentslide.classList.add("switch-bgd");
+          // currentslide.classList.add("switch-bgd");
      }
 }
 
@@ -31,16 +32,24 @@ function switchSlideContent(clickedSlideContent){
      }
 }
 
+
+addEmployeeBtn.classList.add("active");
 addEmployeeBtn.addEventListener('click',()=>{
      switchSlide(addEmployeeBtn);
      switchSlideContent(employeeListContainer);
      searchContainer.classList.add("active");
+     image.classList.remove("active");
+     addEmployeeBtn.classList.add("active")
+     employeeListBtn.classList.remove("active")
 });
 
 employeeListBtn.addEventListener('click',()=>{
      switchSlide(employeeListBtn);
      switchSlideContent(addEmployeeContainer);
      searchContainer.classList.remove("active");
+     image.classList.add("active");
+     addEmployeeBtn.classList.remove("active");
+     employeeListBtn.classList.add("active")
 });
 
 const inputs = document.querySelectorAll('input');
@@ -195,5 +204,3 @@ refersh.addEventListener("click",()=>{
          }
      }
 })
-
-
